@@ -1,7 +1,11 @@
-.App {
+@import '../../shared.scss';
+
+.app {
   text-align: center;
-  max-width: 550px;
   display: flex;
   flex-direction: column;
-  margin: 20px auto;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: $pavioletRed;
 }

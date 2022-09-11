@@ -1,20 +1,37 @@
 import "./App.scss";
-import Joke from "../Joke/Joke";
-import jokesData from "../../data/data";
+import Joke from "../joke/Joke";
+import { useEffect, useId } from "react";
+import { useState } from "react";
 
 export default function App() {
-    const jokeElements = jokesData.map(joke => {
-        return (
-            <Joke 
-                key={joke.id}
-                setup={joke.setup} 
-                punchline={joke.punchline} 
-            />
-        )
-    })
+    const [jokeOfTheDay, setJokeOfTheDay] = useState("");
+
+    useEffect(() => {
+        fetch('https://api.jokes.one/jod')
+        .then(response => {
+          if(response.ok) {
+            return response.json();
+          }
+          throw response;
+        })
+        .then(jokeData => {
+            console.log(jokeData);
+            if(jokeData.contents.jokes) {
+                setJokeOfTheDay(jokeData.contents.jokes[0].joke.text);
+            }
+        })
+        .catch(err => {
+          console.log("error: ", err);
+        })
+    }, []);
+
+
     return (
-        <div>
-            {jokeElements}
+        <div className="app">
+            <Joke 
+                key={useId()}
+                jokeOfTheDay={jokeOfTheDay}
+            />
         </div>
     )
 }

@@ -1,4 +1,20 @@
+@import '../../shared.scss';
+
 h3 {
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.joke {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        width: 255px;
+        margin: 0 auto;
+    }
+
+    p {
+        color: $white;
+    }
 }
