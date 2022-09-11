@@ -15,9 +15,9 @@ export default function App() {
           throw response;
         })
         .then(jokeData => {
-            console.log(jokeData);
             if(jokeData.contents.jokes) {
-                setJokeOfTheDay(jokeData.contents.jokes[0].joke.text);
+                console.log(jokeData);
+                setJokeOfTheDay(jokeData.contents.jokes[0].joke);
             }
         })
         .catch(err => {
@@ -28,10 +28,11 @@ export default function App() {
 
     return (
         <div className="app">
-            <Joke 
-                key={useId()}
-                jokeOfTheDay={jokeOfTheDay}
-            />
+            {jokeOfTheDay &&
+                <Joke 
+                    jokeOfTheDayProp={jokeOfTheDay}
+                />        
+            }
         </div>
     )
 }
