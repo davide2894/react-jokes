@@ -5,12 +5,16 @@ export default function Joke(props) {
 
     const [isShown, setIsShown] = useState(false);
 
+    const jokeOfTheDayProp = props.jokeOfTheDayProp;
+
     function toggle() {
         setIsShown(prevState => !prevState);
     }
     
+
     return (
         <div className="joke">
+            <h1>Joke of {jokeOfTheDayProp.date}</h1>
             <button onClick={toggle}>
                 {isShown ? 
                 "Hide the joke of the day!" : 
@@ -18,7 +22,7 @@ export default function Joke(props) {
                 }
             </button>
             <div className="joke__textContainer">
-                {isShown && <p>{props.jokeOfTheDay}</p>}
+                {isShown && <p>{jokeOfTheDayProp.text}</p>}
             </div>
         </div>
     )

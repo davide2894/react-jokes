@@ -1,20 +1,30 @@
 @import '../../shared.scss';
 
-h3 {
+h1 {
     font-weight: bold;
+    font-size: rem(20px);
     margin-bottom: 10px;
 }
 
 .joke {
     display: flex;
     flex-direction: column;
+    min-height: 200px;
 
     button {
         width: 255px;
-        margin: 0 auto;
+        min-height: 60px;
+        font-size: rem(16px);
+        border-color: transparent;
     }
 
     p {
-        color: $white;
+        font-weight: bold;
+        font-size: rem(18px);
+    }
+
+    button,
+    p {
+        margin: 20px auto 0;
     }
 }
